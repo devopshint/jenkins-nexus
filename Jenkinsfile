@@ -90,6 +90,7 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps {
+                script {
     def scannerHome = tool 'SonarQube'
       withSonarQubeEnv('SonarQube') {
       sh """/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube/bin/sonar-scanner \
@@ -105,6 +106,7 @@ pipeline {
         -D sonar.host.url=http://18.117.165.156:9000/"""
         }
 }
+            }
         }
    stage('Build Docker Image') {
             steps {
