@@ -90,10 +90,12 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             steps {
-                
+        environment {}        
     def scannerHome = tool 'SonarQube'
+            }
+      steps {
       withSonarQubeEnv('SonarQube') {
-          script {
+         
       sh """/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube/bin/sonar-scanner \
      -D sonar.projectVersion=1.0-SNAPSHOT \
        -D sonar.login=admin \
