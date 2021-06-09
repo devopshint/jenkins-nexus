@@ -73,16 +73,7 @@
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
-          <configuration>
-                  <archive>
-                    <manifest>
-
-                    <!-- give full qualified name of your main class-->
-                      <mainClass>com.mycompany.app</mainClass>
-
-                    </manifest>
-                  </archive>
-                </configuration>
+  
 
         </plugin>
         <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
@@ -101,6 +92,13 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
+          <configuration>
+				<archive>
+					<manifest>
+						<mainClass>com.mycompany.app</mainClass>
+					</manifest>
+				</archive>
+			</configuration>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
