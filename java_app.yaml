@@ -2,22 +2,22 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: javaApp
+  name: java_app
   namespace: default
   labels:
-    app: javaApp
+    app: java_app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: javaApp
+      app: java_app
   template:
     metadata:
       labels:
-        app: javaApp
+        app: java_app
     spec:
       containers:
-      - name: javaApp
+      - name: java_app
         image: "devopshint/my-app-1.0:latest"
         ports:
           - containerPort: 8081
@@ -25,11 +25,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: javaApp
+  name: java_app
   namespace: default
 spec:
   selector:
-    app: javaApp
+    app: java_app
   type: LoadBalancer
   ports:
   - name: http
