@@ -89,8 +89,8 @@ pipeline {
 
         }
         stage('SonarQube Analysis') {
-            steps {
-        environment {}        
+           
+        environment {     
     def scannerHome = tool 'SonarQube'
             }
       steps {
@@ -110,7 +110,7 @@ pipeline {
         }
       }
             }
-        }
+        
    stage('Build Docker Image') {
             steps {
                 script {
