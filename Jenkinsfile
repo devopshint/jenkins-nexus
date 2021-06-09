@@ -90,20 +90,15 @@ pipeline {
 
         }
         stage('SonarQube Analysis') {
-           
-        steps {
-            script {
-
-
-    def scannerHome = tool 'SonarQube';
-            
+    steps{
+        script{
+    def scannerHome = tool "SonarQube";
       withSonarQubeEnv('SonarQube') {
-         
       sh """/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube/bin/sonar-scanner \
      -D sonar.projectVersion=1.0-SNAPSHOT \
        -D sonar.login=admin \
       -D sonar.password=admin \
-      -D sonar.projectBaseDir=/var/lib/jenkins/workspace/my pipeline \
+      -D sonar.projectBaseDir=/var/lib/jenkins/workspace/sonarqube \
         -D sonar.projectKey=my-app \
         -D sonar.sourceEncoding=UTF-8 \
         -D sonar.language=java \
@@ -111,9 +106,9 @@ pipeline {
         -D sonar.tests=src/test \
         -D sonar.host.url=http://18.117.165.156:9000/"""
         }
-      }
-            }
-        }
+    }
+}
+}
    stage('Build Docker Image') {
             steps {
                 script {
