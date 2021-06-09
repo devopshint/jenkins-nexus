@@ -7,6 +7,8 @@
   <groupId>com.mycompany.app</groupId>
   <artifactId>my-app</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <name>Hello World</name>
+
 
   <name>Example of basic Maven project to integrate with SonarQube</name>
   
@@ -74,6 +76,17 @@
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
+          <configuration>
+                  <archive>
+                    <manifest>
+
+                    <!-- give full qualified name of your main class-->
+                      <mainClass>com.mycompany.app</mainClass>
+
+                    </manifest>
+                  </archive>
+                </configuration>
+
         </plugin>
         <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
         <plugin>
