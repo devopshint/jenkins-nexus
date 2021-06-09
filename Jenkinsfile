@@ -12,6 +12,7 @@ pipeline {
     }
 
     stages {
+
         stage('Build Maven') {
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'GIT_REPO', url: 'https://github.com/devopshint/sonarqube.git']]])
@@ -90,10 +91,12 @@ pipeline {
         }
         stage('SonarQube Analysis') {
            
-        environment {     
-    def scannerHome = tool 'SonarQube'
-            }
-      steps {
+        steps {
+            script {
+
+
+    def scannerHome = tool 'SonarQube';
+            
       withSonarQubeEnv('SonarQube') {
          
       sh """/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube/bin/sonar-scanner \
@@ -110,7 +113,7 @@ pipeline {
         }
       }
             }
-        
+        }
    stage('Build Docker Image') {
             steps {
                 script {
