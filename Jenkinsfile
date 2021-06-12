@@ -104,5 +104,12 @@ pipeline {
     }
 }
 }
+  stage('Build Docker Image') {
+            steps {
+                script {
+                  sh 'docker build -t devopshint/my-app-1.0:latest .'
+                }
+            }
+        }
     }
 }
