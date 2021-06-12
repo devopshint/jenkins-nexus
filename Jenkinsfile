@@ -1,5 +1,11 @@
 pipeline {
-    
+    environment { 
+
+        registry = "devopshint/my-app-1.0" 
+
+        registryCredential = 'devopshint' 
+
+    }
     
     agent any
     tools {
@@ -110,6 +116,16 @@ pipeline {
                   sh 'docker build -t devopshint/my-app-1.0:latest .'
                 }
             }
-        }
+        }   
+    stage('Deploy Image') {
+        steps {
+            script {
+                docker.withRegistry( '', registryCredential ) {
+                 sh 'docker push devopshint/my-app-1.0:latest'
+
+                }
+    }
+            }
+    }
     }
 }
