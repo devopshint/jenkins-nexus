@@ -94,7 +94,7 @@ pipeline {
        -D sonar.login=admin \
       -D sonar.password=admin \
       -D sonar.projectBaseDir=/var/lib/jenkins/workspace/new CICD pipeline \
-        -D sonar.projectKey=my-app \
+        -D sonar.projectKey=my-app1 \
         -D sonar.sourceEncoding=UTF-8 \
         -D sonar.language=java \
         -D sonar.sources=src/main \
