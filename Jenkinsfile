@@ -84,5 +84,25 @@ pipeline {
             }
 
         }
+    stage('SonarQube Analysis') {
+    steps{
+        script{
+    def scannerHome = tool "SonarQube";
+      withSonarQubeEnv('SonarQube') {
+      sh """/var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube/bin/sonar-scanner \
+     -D sonar.projectVersion=1.0-SNAPSHOT \
+       -D sonar.login=admin \
+      -D sonar.password=admin \
+      -D sonar.projectBaseDir=/var/lib/jenkins/workspace/new CICD pipeline \
+        -D sonar.projectKey=my-app \
+        -D sonar.sourceEncoding=UTF-8 \
+        -D sonar.language=java \
+        -D sonar.sources=src/main \
+        -D sonar.tests=src/test \
+        -D sonar.host.url=http://18.191.154.53:9000/"""
+        }
+    }
+}
+}
     }
 }
