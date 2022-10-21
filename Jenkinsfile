@@ -6,15 +6,15 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "159.223.191.140:8081"
-        NEXUS_REPOSITORY = "java-app"
-        NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
+        NEXUS_URL = "54.242.6.84:8081"
+        NEXUS_REPOSITORY = "maven-test"
+        NEXUS_CREDENTIAL_ID = "Nexus_Cred"
     }
     stages {
         stage("Clone code from GitHub") {
             steps {
                 script {
-                    git branch: 'main', credentialsId: 'githubwithpassword', url: 'https://github.com/devopshint/jenkins-nexus';
+                    git branch: 'main', credentialsId: 'github-webhook', url: 'https://github.com/mizraimn/maven-test';
                 }
             }
         }
